@@ -1,0 +1,48 @@
+{
+  "version": "1.0.0",
+  "defaultServer": "sangamflow-local",
+  "servers": {
+    "sangamflow-local": {
+      "id": "sangamflow-local",
+      "name": "SangamFlow Local",
+      "description": "Local SangamFlow MCP Server",
+      "command": "node",
+      "args": ["${extensionPath}/mcp-server/bin/sangamflow-mcp.mjs"],
+      "enabled": true,
+      "priority": 1,
+      "capabilities": {
+        "videoGeneration": true,
+        "imageGeneration": true,
+        "characterManagement": true,
+        "storyboardAnalysis": true,
+        "multiAccount": true
+      }
+    },
+    "sangamflow-remote": {
+      "id": "sangamflow-remote",
+      "name": "SangamFlow Cloud",
+      "description": "Remote SangamFlow MCP Server",
+      "command": "node",
+      "args": ["${extensionPath}/mcp-server/bin/sangamflow-mcp.mjs"],
+      "env": {
+        "SANGAMFLOW_MODE": "remote",
+        "SANGAMFLOW_API_URL": "https://api.sangamflow.ai"
+      },
+      "enabled": false,
+      "priority": 2,
+      "capabilities": {
+        "videoGeneration": true,
+        "imageGeneration": true,
+        "characterManagement": true,
+        "storyboardAnalysis": true,
+        "multiAccount": true,
+        "cloudStorage": true
+      }
+    }
+  },
+  "healthCheck": {
+    "interval": 30000,
+    "timeout": 5000,
+    "unhealthyThreshold": 3
+  }
+}

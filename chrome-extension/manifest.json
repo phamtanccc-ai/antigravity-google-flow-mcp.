@@ -1,0 +1,75 @@
+{
+  "manifest_version": 3,
+  "name": "SangamFlow - AI Agent Connector",
+  "short_name": "SangamFlow",
+  "version": "2.0.0",
+  "description": "Professional AI agent connector for Google Flow (Veo 3.1 & Imagen 3). Multi-MCP server support, multi-account management, real-time progress tracking, and advanced video generation capabilities.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_title": "SangamFlow Flow Studio",
+    "default_popup": "popup-v2.html"
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "background": {
+    "service_worker": "service-worker.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://labs.google.com/*",
+        "https://labs.google/*",
+        "https://flow.google.com/*"
+      ],
+      "js": ["catchUploadFile.js", "content-script-main.js"],
+      "run_at": "document_start",
+      "world": "MAIN"
+    },
+    {
+      "matches": [
+        "https://labs.google.com/*",
+        "https://labs.google/*",
+        "https://flow.google.com/*"
+      ],
+      "js": ["content-script-isolated.js"],
+      "run_at": "document_idle",
+      "world": "ISOLATED"
+    }
+  ],
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "storage",
+    "downloads",
+    "scripting",
+    "sidePanel",
+    "debugger",
+    "alarms"
+  ],
+  "host_permissions": [
+    "https://labs.google.com/*",
+    "https://labs.google/*",
+    "https://flow.google.com/*",
+    "https://aisandbox-pa.googleapis.com/*",
+    "http://127.0.0.1/*"
+  ],
+  "web_accessible_resources": [
+    {
+      "matches": [
+        "https://labs.google.com/*",
+        "https://labs.google/*",
+        "https://flow.google.com/*"
+      ],
+      "resources": [
+        "catchUploadFile.js",
+        "content-script-main.js"
+      ]
+    }
+  ]
+}

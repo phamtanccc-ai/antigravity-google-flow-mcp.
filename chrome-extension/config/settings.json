@@ -1,0 +1,41 @@
+{
+  "version": "1.0.0",
+  "theme": "professional-dark",
+  "language": "en",
+  "notifications": {
+    "enabled": true,
+    "sound": true,
+    "desktop": true,
+    "completion": true,
+    "errors": true
+  },
+  "generation": {
+    "defaultModel": "veo-quality",
+    "defaultAspectRatio": "16:9",
+    "defaultDuration": 8,
+    "autoDownload": true,
+    "downloadFolder": "SangamFlow",
+    "waitForCompletion": true,
+    "maxConcurrent": 3
+  },
+  "ui": {
+    "compactMode": false,
+    "showAdvancedOptions": false,
+    "autoHidePanel": false,
+    "animationSpeed": "normal"
+  },
+  "keyboard": {
+    "enabled": true,
+    "shortcuts": {
+      "generate": "Ctrl+Enter",
+      "cancel": "Escape",
+      "settings": "Ctrl+,",
+      "togglePanel": "Ctrl+Shift+S"
+    }
+  },
+  "multiAccount": {
+    "enabled": true,
+    "autoSwitch": true,
+    "rememberLastAccount": true
+  }
+}
